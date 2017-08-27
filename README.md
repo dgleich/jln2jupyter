@@ -11,7 +11,7 @@ such as
 samples = map(_ -> eigvals!(randn(50,50)), 1:50)
 
 ## Step 2. Plot the results
-histogram(map(x->maximum(abs(x)), samples))
+histogram(map(x->maximum(abs.(x)), samples))
 ~~~~
 and turn it into a valid Jupyter notebook (`ipynb` file) that can be
 published as an HTML file.
@@ -79,7 +79,7 @@ a Julia notebook file that we had above
 samples = map(_ -> eigvals!(randn(50,50)), 1:50)
 
 ## Step 2. Plot the results
-histogram(map(x->maximum(abs(x)), samples))
+histogram(map(x->maximum(abs.(x)), samples))
 ~~~~
 
 Note how Step 1 and Step 2 both start with a double comment `##`

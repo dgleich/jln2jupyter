@@ -80,7 +80,7 @@ end
 # When running this file as a script, try to do so with default values.  If arguments are passed
 # in, use them as the arguments to build_sysimg above.
 if !isinteractive()
-    if length(ARGS) == 0 || length(ARGS) > 2 || ("--help" in ARGS || "-h" in ARGS)
+    if length(ARGS) == 0 || length(ARGS) > 3 || ("--help" in ARGS || "-h" in ARGS)
         println()
         println("Usage: jln2jupyter.jl <julia> [<outputipynb>] [--verbose]")
         println("   <julia>        is the file name of the julia (*.jl or *.jln extension)")
@@ -103,7 +103,7 @@ if !isinteractive()
     filter!(x -> x != "--verbose", ARGS)
 
     jlfile = ARGS[1]
-    if length(ARGS) > 1
+    if length(ARGS) < 2
       jlbase = splitext(jlfile)[1]
       ipynbfile = jlbase * ".ipynb"
     else

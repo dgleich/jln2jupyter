@@ -23,6 +23,6 @@ ylabel!("Im(λ)")
 title!("Eigenvalue Histogram")
 
 ## Show the histogram of the largest eigenvalue
-histogram(map(x -> maximum(abs(x)), samples))
+histogram(map(x -> maximum(abs.(x)), samples))
 xlabel!("eigenvalue")
 ylabel!("count")
