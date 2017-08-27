@@ -1,0 +1,28 @@
+## A sample Julia notebook file.
+using Plots
+using Iterators
+pyplot()    # select the pyplot backend
+
+## Generate statistics on matrices with Gaussian entries.
+# Eigenvalues of matrices where each entry is a random number from the sample
+# distribution over have interesting properties in their eigenvalue spectra.
+# Here, we will look at this set with 500 by 500 matrices and 100 samples,
+# where each entry is a normal random variable.
+
+n = 500 # generate 500x500 random matrix
+t = 100 # use 100 random samples
+
+sample(n) = eigvals!(randn(n,n)) # define the sample function
+samples = map(_ -> sample(n), 1:t)
+evals = collect(chain(samples...))
+
+## Plot the results
+histogram2d(evals, nbins=50)
+xlabel!("Re(λ)")
+ylabel!("Im(λ)")
+title!("Eigenvalue Histogram")
+
+## Show the histogram of the largest eigenvalue
+histogram(map(x -> maximum(abs(x)), samples))
+xlabel!("eigenvalue")
+ylabel!("count")
