@@ -1,4 +1,4 @@
-`jln2jupyter.jl` to convert a Julia Notebook into a Jupyter Notebook
+`jln2jupyter.jl`: convert a Julia Notebook into a Jupyter Notebook
 ====================================================================
 
 Summary
@@ -8,7 +8,7 @@ Take a julia file where computational cells are marked with double comments,
 such as
 ~~~~
 ## Step 1. Generate data on eigenvalues of random matrices
-samples = map(_ -> eigvals!(randn(50,50)), 1:50)
+samples = map(_ -> eigvals!(randn(50,50)), 1:50); # semi-colon to hide output
 
 ## Step 2. Plot the results
 histogram(map(x->maximum(abs.(x)), samples))
@@ -19,6 +19,7 @@ published as an HTML file.
 julia jln2jupyter.jl mycode.jl                     # convert to mycode.ipynb
 jupyter nbconvert --execute -to html mycode.ipynb  # convert to mycode.html
 ~~~~
+![An example output file](https://github.com/dgleich/jln2jupyter/blob/build_docs/Example-Output.png)
 
 Note that Juno (Atom) has support for executing cell-mode `.jl` files. We
 chose to call them `Julia notebook` files (`.jln`), although there is nothing
@@ -76,7 +77,7 @@ a Julia notebook file that we had above
 
 ~~~~
 ## Step 1. Generate data on eigenvalues of random matrices
-samples = map(_ -> eigvals!(randn(50,50)), 1:50)
+samples = map(_ -> eigvals!(randn(50,50)), 1:50) # semi-colon to hide output
 
 ## Step 2. Plot the results
 histogram(map(x->maximum(abs.(x)), samples))
