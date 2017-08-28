@@ -11,6 +11,8 @@ such as
 samples = map(_ -> eigvals!(randn(50,50)), 1:50); # semi-colon to hide output
 
 ## Step 2. Plot the results
+usig Plots
+pyplot(size=(150,150))
 histogram(map(x->maximum(abs.(x)), samples))
 ~~~~
 and turn it into a valid Jupyter notebook (`ipynb` file) that can be
@@ -80,6 +82,8 @@ a Julia notebook file that we had above
 samples = map(_ -> eigvals!(randn(50,50)), 1:50) # semi-colon to hide output
 
 ## Step 2. Plot the results
+usig Plots
+pyplot(size=(150,150))
 histogram(map(x->maximum(abs.(x)), samples))
 ~~~~
 
