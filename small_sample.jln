@@ -1,0 +1,10 @@
+## Step 1. Generate data on eigenvalues of random matrices
+samples = map(_ -> eigvals!(randn(50,50)), 1:50); # semi-colon to hide output
+
+## Step 2. Plot the results
+using Plots
+pyplot(size=(150,150))
+histogram(map(x->maximum(abs.(x)), samples))
+
+## Step 3. Extra cell for display
+# There seems to be a bug...

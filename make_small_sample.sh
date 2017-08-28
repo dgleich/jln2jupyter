@@ -1,0 +1,2 @@
+/Applications/Julia-0.6.app/Contents/Resources/julia/bin/julia jln2jupyter.jl small_sample.jln
+/Users/dgleich/.julia/v0.6/Conda/deps/usr/bin/jupyter nbconvert --ExecutePreprocessor.timeout=60 --to html --execute small_sample.ipynb
