@@ -32,10 +32,11 @@ function test_output(output)
 end
 
 function jl2cells(filename)
-  if VERSION < v"0.6"
-    lines = collect(readlines(filename))
-  else
+  if v"0.6" <= VERSION < v"0.7"
+      # chomp true by default?
     lines = collect(readlines(filename, chomp=false))
+else
+    lines = collect(readlines(filename))
   end
   cells = Vector{Vector{String}}()
   block = Vector{String}()
