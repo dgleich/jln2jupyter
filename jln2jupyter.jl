@@ -18,7 +18,7 @@ end
 function ipynb_structure()
   ipynb = Dict{String,Any}()
   kernelspec = Dict{String,String}("language" => "julia",
-                                   "name" => "julia-$(VERSION.major).$(VERSION.minor).$(VERSION.patch)", "display_name" => "Julia v$(VERSION.major).$(VERSION.minor)")
+                                   "name" => "julia-$(VERSION.major).$(VERSION.minor)", "display_name" => "Julia v$(VERSION.major).$(VERSION.minor)")
   ipynb["metadata"] = Dict{String,Any}("kernelspec" => kernelspec)
   ipynb["nbformat"] = 4
   ipynb["nbformat_minor"] = 0
@@ -33,9 +33,9 @@ function test_output(output)
 end
 
 function jl2cells(filename)
-  if VERSION < v"0.6"
+  if VERSION < v"0.6-"
     lines = collect(readlines(filename))
-elseif VERSION < v"0.7"
+elseif VERSION < v"0.7-"
     lines = collect(readlines(filename, chomp=false))
 else  # keep keyword
     lines = collect(readlines(filename, keep=true))
