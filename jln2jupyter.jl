@@ -33,9 +33,9 @@ function test_output(output)
 end
 
 function jl2cells(filename)
-  if VERSION < v"0.6-"
+  if VERSION < v"0.6"
     lines = collect(readlines(filename))
-elseif VERSION < v"0.7-"
+elseif VERSION < v"0.7"
     lines = collect(readlines(filename, chomp=false))
 else  # keep keyword
     lines = collect(readlines(filename, keep=true))
