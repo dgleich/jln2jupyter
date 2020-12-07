@@ -1,3 +1,4 @@
+#!julia
 using JSON
 
 function make_code_cell(code)
@@ -17,7 +18,7 @@ end
 function ipynb_structure()
   ipynb = Dict{String,Any}()
   kernelspec = Dict{String,String}("language" => "julia",
-    "name" => "julia-0.6", "display_name" => "Julia 0.6")
+                                   "name" => "julia-$(VERSION.major).$(VERSION.minor)", "display_name" => "Julia v$(VERSION.major).$(VERSION.minor)")
   ipynb["metadata"] = Dict{String,Any}("kernelspec" => kernelspec)
   ipynb["nbformat"] = 4
   ipynb["nbformat_minor"] = 0
@@ -34,8 +35,10 @@ end
 function jl2cells(filename)
   if VERSION < v"0.6"
     lines = collect(readlines(filename))
-  else
+elseif VERSION < v"0.7"
     lines = collect(readlines(filename, chomp=false))
+else  # keep keyword
+    lines = collect(readlines(filename, keep=true))
   end
   cells = Vector{Vector{String}}()
   block = Vector{String}()
