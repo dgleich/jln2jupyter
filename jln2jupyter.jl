@@ -1,3 +1,4 @@
+#!julia
 using JSON
 
 function make_code_cell(code)
@@ -17,7 +18,7 @@ end
 function ipynb_structure()
   ipynb = Dict{String,Any}()
   kernelspec = Dict{String,String}("language" => "julia",
-                                   "name" => "julia-$VERSION", "display_name" => "Julia $(VERSION.major).$(VERSION.minor)")
+                                   "name" => "julia-$(VERSION.major).$(VERSION.minor).$(VERSION.patch)", "display_name" => "Julia v$(VERSION.major).$(VERSION.minor)")
   ipynb["metadata"] = Dict{String,Any}("kernelspec" => kernelspec)
   ipynb["nbformat"] = 4
   ipynb["nbformat_minor"] = 0
